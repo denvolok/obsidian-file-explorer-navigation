@@ -1,0 +1,9 @@
+{
+  "id": "obsidian-file-explorer-navigation",
+  "name": "File Explorer Navigation",
+  "version": "0.0.1-dev",
+  "minAppVersion": "0.15.0",
+  "description": "Enables keyboard based navigation and interaction in file explorer.",
+  "author": "Denis Volok <denis.volok@pm.me>",
+  "isDesktopOnly": true
+}
