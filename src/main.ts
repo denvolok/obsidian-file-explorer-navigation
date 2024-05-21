@@ -34,7 +34,52 @@ export default class FileTreeNav extends FileTreeNavSettings {
     const fileExplorer = this.app.workspace.activeLeaf?.view as View;
     const isContextMenuOpened = document.querySelector(".menu") != null;
 
-    if (!event.shiftKey) {
+    if (event.shiftKey) {
+      switch (event.code) {
+        case "KeyZ": {
+          fileExplorer.tree.isAllCollapsed = false;
+          fileExplorer.tree.setCollapseAll(true);
+          break;
+        }
+        case "KeyK": {
+          const focusedElement = fileExplorer.tree.focusedItem.el.querySelector(
+            ".nav-folder-title, .nav-file-title",
+          ) as HTMLElement;
+          const contextmenuEvent = new MouseEvent("contextmenu", {
+            bubbles: true,
+            cancelable: true,
+            view: window,
+            clientX: focusedElement.getBoundingClientRect().left,
+            clientY: focusedElement.getBoundingClientRect().top,
+          });
+
+          focusedElement.dispatchEvent(contextmenuEvent);
+
+          break;
+        }
+        default:
+      }
+    } else if (event.altKey) {
+      switch (event.code) {
+        case "KeyK": {
+          const focusedElement = fileExplorer.tree.focusedItem.el.querySelector(
+            ".nav-folder-title, .nav-file-title",
+          ) as HTMLElement;
+          const contextmenuEvent = new MouseEvent("contextmenu", {
+            bubbles: true,
+            cancelable: true,
+            view: window,
+            clientX: focusedElement.getBoundingClientRect().left,
+            clientY: focusedElement.getBoundingClientRect().top,
+          });
+
+          focusedElement.dispatchEvent(contextmenuEvent);
+
+          break;
+        }
+        default:
+      }
+    } else {
       switch (event.code) {
         case "KeyJ": {
           if (isContextMenuOpened) {
@@ -68,31 +113,6 @@ export default class FileTreeNav extends FileTreeNavSettings {
         }
         case "KeyL": {
           fileExplorer.tree.onKeyArrowRight(event);
-          break;
-        }
-        default:
-      }
-    } else {
-      switch (event.code) {
-        case "KeyZ": {
-          fileExplorer.tree.isAllCollapsed = false;
-          fileExplorer.tree.setCollapseAll(true);
-          break;
-        }
-        case "KeyK": {
-          const focusedElement = fileExplorer.tree.focusedItem.el.querySelector(
-            ".nav-folder-title, .nav-file-title",
-          ) as HTMLElement;
-          const contextmenuEvent = new MouseEvent("contextmenu", {
-            bubbles: true,
-            cancelable: true,
-            view: window,
-            clientX: focusedElement.getBoundingClientRect().left,
-            clientY: focusedElement.getBoundingClientRect().top,
-          });
-
-          focusedElement.dispatchEvent(contextmenuEvent);
-
           break;
         }
         default:
