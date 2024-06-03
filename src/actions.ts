@@ -1,4 +1,4 @@
-import { App, View } from "obsidian";
+import { App, FileExplorer, TFolder, View } from "obsidian";
 
 export function collapseAllFolders(app: App) {
   const fileExplorer = app.workspace.activeLeaf?.view as View;
@@ -63,4 +63,17 @@ export function splitRight(app: App) {
     const newLeaf = this.app.workspace.splitActiveLeaf();
     newLeaf.openFile(selectedFile);
   }
+}
+
+export function createNewItem(app: App, type: "file" | "folder") {
+  const fileExplorer = app.workspace.activeLeaf?.view as FileExplorer;
+  const selectedItem = fileExplorer.tree.focusedItem.file as any;
+  const isFileSelected = selectedItem?.extension != null;
+  let folder: TFolder | null = selectedItem;
+
+  if (isFileSelected) {
+    folder = selectedItem!.parent;
+  }
+
+  fileExplorer.createAbstractFile(type, folder, false);
 }
