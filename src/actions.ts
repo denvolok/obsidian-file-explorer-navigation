@@ -54,3 +54,13 @@ export function onKeyArrowUp(app: App, event: KeyboardEvent) {
     fileExplorer.tree.onKeyArrowUp(event);
   }
 }
+
+export function splitRight(app: App) {
+  const fileExplorer = app.workspace.activeLeaf?.view as View;
+  const selectedFile = fileExplorer.tree.focusedItem.file;
+
+  if (selectedFile) {
+    const newLeaf = this.app.workspace.splitActiveLeaf();
+    newLeaf.openFile(selectedFile);
+  }
+}

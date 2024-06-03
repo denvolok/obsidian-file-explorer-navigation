@@ -1,9 +1,10 @@
-import "obsidian";
+import { TFile } from "obsidian";
 
 declare module "obsidian" {
   interface View {
     tree: {
       focusedItem: {
+        file: TFile | null;
         el: HTMLElement;
       };
       isAllCollapsed: boolean;

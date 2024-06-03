@@ -2,7 +2,13 @@ import { View } from "obsidian";
 // eslint-disable-next-line import/no-cycle
 import { SampleSettingTab } from "./settings/SampleSettingTab";
 import { FileTreeNavSettings } from "./settings/FileTreeNavSettings";
-import { collapseAllFolders, onKeyArrowDown, onKeyArrowUp, showContextMenu } from "./actions";
+import {
+  collapseAllFolders,
+  onKeyArrowDown,
+  onKeyArrowUp,
+  showContextMenu,
+  splitRight,
+} from "./actions";
 
 export default class FileTreeNav extends FileTreeNavSettings {
   async onload() {
@@ -15,6 +21,8 @@ export default class FileTreeNav extends FileTreeNavSettings {
   onunload() {}
 
   handleKeyPressOnDocument = (event: KeyboardEvent) => {
+    const fileExplorer = this.app.workspace.activeLeaf?.view as View;
+    console.log(fileExplorer);
     if (this.isShouldHandleKeyPress()) {
       event.stopImmediatePropagation();
       this.handleKeyPressOnFileExplorer(event);
@@ -79,6 +87,10 @@ export default class FileTreeNav extends FileTreeNavSettings {
       }
       case "KeyL": {
         fileExplorer.tree.onKeyArrowRight(event);
+        break;
+      }
+      case "KeyS": {
+        splitRight(this.app);
         break;
       }
       default:
