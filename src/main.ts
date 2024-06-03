@@ -15,13 +15,13 @@ export default class FileTreeNav extends FileTreeNavSettings {
   onunload() {}
 
   handleKeyPressOnDocument = (event: KeyboardEvent) => {
-    if (this.isShouldHandleKeyPressOnFileExplorer()) {
+    if (this.isShouldHandleKeyPress()) {
       event.stopImmediatePropagation();
       this.handleKeyPressOnFileExplorer(event);
     }
   };
 
-  isShouldHandleKeyPressOnFileExplorer = (): boolean => {
+  isShouldHandleKeyPress = (): boolean => {
     // TODO: not sure about this selector. Perhaps can affect custom views
     const isFileExplorerFocused =
       this.app.workspace.activeLeaf?.view.getViewType() === "file-explorer";
@@ -30,11 +30,12 @@ export default class FileTreeNav extends FileTreeNavSettings {
       return false;
     }
 
+    const isPopupOpen = !!document.querySelector(".modal");
     const isInputFocused =
       document.activeElement?.classList.contains("is-being-renamed") ||
       document.activeElement?.tagName === "INPUT";
 
-    return !isInputFocused;
+    return !isInputFocused && !isPopupOpen;
   };
 
   handleKeyPressOnFileExplorer = (event: KeyboardEvent): void => {
