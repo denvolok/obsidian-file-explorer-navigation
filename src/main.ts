@@ -73,6 +73,10 @@ export default class FileTreeNav extends FileTreeNavSettings {
     }
 
     switch (event.code) {
+      case "ContextMenu": {
+        showContextMenu(this.app);
+        break;
+      }
       case "KeyJ": {
         onKeyArrowDown(this.app, event);
         break;
