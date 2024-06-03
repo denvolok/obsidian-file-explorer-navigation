@@ -4,6 +4,7 @@
   "description": "Obsidian plugin which enables keyboard based navigation and interaction in file explorer.",
   "main": "main.js",
   "scripts": {
+    "prepare": "husky",
     "dev": "node esbuild.config.mjs",
     "dev:tsc": "tsc --noEmit -w",
     "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
@@ -20,11 +21,6 @@
       "prettier --write"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "devDependencies": {
     "@types/node": "20.12.5",
     "@typescript-eslint/eslint-plugin": "7.5.0",
@@ -37,7 +33,7 @@
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-import": "2.29.1",
     "eslint-plugin-prettier": "5.1.3",
-    "husky": "4.2.5",
+    "husky": "9.0.11",
     "lint-staged": "10.2.11",
     "obsidian": "1.5.7-1",
     "prettier": "3.2.5",
