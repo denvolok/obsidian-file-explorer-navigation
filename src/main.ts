@@ -4,6 +4,7 @@ import { SampleSettingTab } from "./settings/SampleSettingTab";
 import { FileTreeNavSettings } from "./settings/FileTreeNavSettings";
 import {
   collapseAllFolders,
+  cloneFile,
   createNewItem,
   onKeyArrowDown,
   onKeyArrowUp,
@@ -102,6 +103,10 @@ export default class FileTreeNav extends FileTreeNavSettings {
       }
       case "KeyF": {
         createNewItem(this.app, "folder");
+        break;
+      }
+      case "KeyC": {
+        cloneFile(this.app);
         break;
       }
       default:
