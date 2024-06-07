@@ -1,6 +1,8 @@
 # Obsidian File Explorer Navigation
 
-## Key Bindings
+[Obsidian](https://obsidian.md/) plugin to enable keyboard based navigation and interaction in the file explorer.
+
+## Supported Key Bindings
 
 - `j`: select next item (also works in the context menu)
 - `k`: select previous item (also works in the context menu)
@@ -12,3 +14,13 @@
 - `c`: make a copy
 - `shift-z`: collapse all nodes
 - `shift k`: open context menu on selected item
+
+## Installation
+
+1. Copy plugin folder into your Obsidian vault `VaultFolder/.obsidian/plugins/`.
+2. Enable the plugin in Obsidian settings.
+
+## Usage
+
+1. Focus the file explorer
+2. Use [supported key bindings](#supported-key-bindings) to navigate and interact with the file explorer.
