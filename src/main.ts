@@ -74,6 +74,7 @@ export default class FileTreeNav extends FileTreeNavSettings {
 
     switch (event.code) {
       case "ContextMenu": {
+        event.preventDefault();
         showContextMenu(this.app);
         break;
       }
