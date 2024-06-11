@@ -41,7 +41,8 @@ export default class FileTreeNav extends FileTreeNavSettings {
     const isPopupOpen = !!document.querySelector(".modal");
     const isInputFocused =
       document.activeElement?.classList.contains("is-being-renamed") ||
-      document.activeElement?.tagName === "INPUT";
+      document.activeElement?.tagName === "INPUT" ||
+      document.activeElement?.getAttribute("contenteditable") === "true";
 
     return !isInputFocused && !isPopupOpen;
   };
